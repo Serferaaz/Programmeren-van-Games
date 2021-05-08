@@ -19,13 +19,13 @@ public class PaddleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Door dit script met de GameManager te koppelen laat je de paddle stoppen als je geen levens meer hebt
+        // Door dit script met de GameManager te koppelen laat je de paddle stoppen als je geen levens meer hebt.
         if (gm.gameOver){
             return;
         }
 
 
-        // Hier geef je aan dat de paddle horizontaal te werk gaat en dat de paddle niet verder kan gaan dan het scherm zelf
+        // Hier geef je aan dat de paddle horizontaal te werk gaat en dat de paddle niet verder kan gaan dan het scherm zelf.
         float horizontal = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
@@ -39,11 +39,11 @@ public class PaddleScript : MonoBehaviour
         }
     }
 
-    // Hier staat dus dat als je de power up aanraakt, dat het de powerup kapotmaakt
+    // Hier staat dus dat als je de power up aanraakt, dat het de powerup kapotmaakt.
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Powerup"))
         {
-            ballscript.speed += 1;
+            ballscript.speed += 0.5f;
             Destroy(other.gameObject);
         }
     }

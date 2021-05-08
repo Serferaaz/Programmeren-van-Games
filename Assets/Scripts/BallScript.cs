@@ -15,7 +15,7 @@ public class BallScript : MonoBehaviour
     AudioSource audio;
     public GameManager gm;
 
-    // Start is called before the first frame update
+    // Hier roep je de rigidbody en de audio aan.
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
@@ -25,7 +25,7 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Door dit script met de GameManager te koppelen laat je de bal stoppen als je geen levens meer hebt
+        // Door dit script met de GameManager te koppelen laat je de bal stoppen als je geen levens meer hebt.
         if (gm.gameOver){
             return;
         }       
@@ -36,7 +36,7 @@ public class BallScript : MonoBehaviour
         }
 
 
-        // Als je spatie drukt en het spel speelt niet af, dan wordt de bal omhoog geschoten en speelt het spel. De bal krijgt dan een standaard snelheid
+        // Als je spatie drukt en het spel speelt niet af, dan wordt de bal omhoog geschoten en speelt het spel. De bal krijgt dan een standaard snelheid.
         // Als het spel speelt en de bal een snelheid heeft, dan word die snelheid als normaal gezien.
         if (Input.GetButtonDown("Jump") && !inPlay) {
             inPlay = true;
@@ -62,7 +62,7 @@ public class BallScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other){
         if (other.transform.CompareTag("Brick")) {
 
-            // Hier laat je de kans rangen tussen 1 en 50 en dan als de kans minder is dan 25 dan spawned het een power up
+            // Hier laat je de kans rangen tussen 1 en 50 en dan als de kans minder is dan 25 dan spawned het een power up.
             int randChance = Random.Range(1, 101);
             if(randChance  < powerUpChance){
                 Instantiate(powerUp, other.transform.position, other.transform.rotation);
